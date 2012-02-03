@@ -21,8 +21,6 @@ SwitecX25::SwitecX25(unsigned int steps, unsigned char pin1, unsigned char pin2,
 {
   this->currentState = 0;
   this->steps = steps;
-  this->minStep = 0;
-  this->maxStep = steps-1; // inclusive range
   this->pins[0] = pin1;
   this->pins[1] = pin2;
   this->pins[2] = pin3;
@@ -158,8 +156,8 @@ void SwitecX25::advance()
 
 void SwitecX25::setPosition(unsigned int pos)
 {
-  if (pos > maxStep) pos = maxStep;
-  if (pos < minStep) pos = minStep;
+  // pos is unsigned so don't need to check for <0
+  if (pos >= steps) pos = steps-1;
   targetStep = pos;
   if (stopped) {
     // reset the timer to avoid possible time overflow giving spurious deltas
@@ -167,14 +165,6 @@ void SwitecX25::setPosition(unsigned int pos)
     time0 = micros();
     microDelay = 0;
   }
-}
-
-void SwitecX25::setRange(unsigned int low, unsigned int high)
-{
-  minStep = low;
-  maxStep = high;
-  if (targetStep<low) setPosition(low);
-  if (targetStep>high) setPosition(high);
 }
 
 void SwitecX25::update()

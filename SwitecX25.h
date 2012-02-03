@@ -7,18 +7,16 @@ class SwitecX25
    static const unsigned char pinCount = 4;
    static const unsigned char stateCount = 6;
    unsigned char pins[pinCount];
-   unsigned char currentState;
-   unsigned int currentStep;
-   unsigned int targetStep;
-   unsigned int steps;
-   unsigned int minStep;
-   unsigned int maxStep; // highest value we will step to
-   unsigned long time0;  // time when we entered this state
-   unsigned int microDelay;
-   unsigned int maxVel;
-   unsigned int vel;  // velocity surrogate (measured in steps of accel)
-   char dir;  // direction -1,0,1  
-   boolean stopped;
+   unsigned char currentState; // 6 steps 
+   unsigned int currentStep;   // step we are currently at
+   unsigned int targetStep;    // target we are moving to
+   unsigned int steps;         // total steps available
+   unsigned long time0;        // time when we entered this state
+   unsigned int microDelay;    // microsecs until next state
+   unsigned int maxVel;        // fastest vel allowed
+   unsigned int vel;           // steps travelled under acceleration
+   char dir;                   // direction -1,0,1  
+   boolean stopped;            // true if stopped
    
    SwitecX25(unsigned int steps, unsigned char pin1, unsigned char pin2, unsigned char pin3, unsigned char pin4);
   
@@ -27,11 +25,9 @@ class SwitecX25
    void zero();
    void update();
    void setPosition(unsigned int pos);
-   void setRange(unsigned int low, unsigned int high);  
   
  private:
    void advance();
-   void setDelay();
    void writeIO();
 };
 
