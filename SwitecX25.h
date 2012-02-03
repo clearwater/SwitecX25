@@ -1,5 +1,6 @@
 #ifndef SwitecX25_h
 #define SwitecX25_h
+#include <Arduino.h>
 
 class SwitecX25
 {
