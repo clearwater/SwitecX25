@@ -22,6 +22,25 @@ of the needle you are using.  You may need to tune the acceleration
 tables in the library for your needle.
 
 
+This Library Is ASYNCHRONOUS NON-BLOCKING
+-----------------------------------------
+If you read nothing more, please read and understand this:
+
+The ```update()``` call is _non-blocking_.  It does _NOT_ move
+the motor to the target position, it advances the motor at _most_
+just one step toward the target position and returns.
+
+The correct way to use this library is:
+
+- Add a call to ```update()``` inside your main loop.  It will return quickly if there is nothing to be done.  If you are waiting for serial I/O, you should be calling ```update()``` while you are waiting.
+
+- Call ```setPosition()``` whenever you need to change the target position of the motor.
+
+The advantage of this over a blocking/synchronous library is that you can
+control many motors simultanously, and you wont have long periods of inactivity
+(and potentially missed I/O events) while your motor is moving.
+
+
 Using the Library
 -----------------
 
