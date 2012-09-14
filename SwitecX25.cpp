@@ -1,3 +1,12 @@
+/*
+ *  SwitecX25 Arduino Library
+ *  Guy Carpenter, Clearwater Software - 2012
+ *
+ *  Licensed under the BSD2 license, see license.txt for details.
+ *
+ *  All text above must be included in any redistribution.
+ */
+
 #include <Arduino.h>
 
 #include "SwitecX25.h"
