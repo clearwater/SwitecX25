@@ -61,7 +61,6 @@ SwitecX25::SwitecX25(unsigned int steps, unsigned char pin1, unsigned char pin2,
 
   accelTable = defaultAccelTable;
   maxVel = defaultAccelTable[DEFAULT_ACCEL_TABLE_SIZE-1][0]; // last value in table.
-  Serial.println(DEFAULT_ACCEL_TABLE_SIZE);
 }
 
 void SwitecX25::writeIO()
