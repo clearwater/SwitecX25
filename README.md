@@ -45,7 +45,7 @@ Using the Library
 -----------------
 
 ```C++
-#import "SwitecX25.h"
+#include "SwitecX25.h"
 
 // 315 degrees of range = 315x3 steps = 945 steps
 // declare motor1 with 945 steps on pins 4-7
