@@ -6,7 +6,7 @@ stepper motors. It was written specifically for the Switec X25.168,
 and compatible steppers from other manufacturers including the 
 VID29 and MCR1108.
 
-For more information including [datasheets](http://clearwater.github.com/gaugette/resources) see the [Gaugette blog](http://clearwater.github.com/gaugette/).
+For more information including [datasheets](http://guy.carpenter.id.au/gaugette/resources) see the [Gaugette blog](http://guy.carpenter.id.au/gaugette/).
 
 Usage Notes
 -----------
