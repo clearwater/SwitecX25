@@ -43,7 +43,7 @@ control many motors simultanously, and you wont have long periods of inactivity
 If instead you require a blocking call which will complete the motor action before returning:
 
 - Call ```setPosition()``` to to the target position of the motore
-- 
+
 - Call ```updateBlocking()``` which will move the motor smoothy to the position set by ```setPosition()```.
 
 Using the Library
