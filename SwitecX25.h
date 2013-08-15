@@ -35,6 +35,7 @@ class SwitecX25
    void stepDown();
    void zero();
    void update();
+   void updateBlocking();
    void setPosition(unsigned int pos);
   
  private:

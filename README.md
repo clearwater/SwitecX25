@@ -34,6 +34,8 @@ The correct way to use this library is:
 
 - Add a call to ```update()``` inside your main loop.  It should be called as frequently as possible.  It will return quickly if there is nothing to be done.  This means for example if you are waiting for serial I/O, you should be calling ```update()``` while you are waiting.
 
+- If you require or prefer a blocking call you can use the ```updateBlocking()``` method, which will move the motor very smooth.
+
 - Call ```setPosition()``` whenever you need to change the target position of the motor.
 
 The advantage of this over a blocking/synchronous library is that you can
