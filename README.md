@@ -36,11 +36,11 @@ The correct way to use this library is:
 
 - Call ```setPosition()``` whenever you need to change the target position of the motor.
 
-- If you require or prefer a blocking call you can use the ```updateBlocking()``` method, which will move the motor smoothly to the position set by ```setPosition()```.
-
 The advantage of this over a blocking/synchronous library is that you can
 control many motors simultanously, and you wont have long periods of inactivity
 (and potentially missed I/O events) while your motor is moving.
+
+If you require a blocking call you can use the ```updateBlocking()``` method, which will move the motor smoothly to the position set by ```setPosition()```.
 
 
 Using the Library
