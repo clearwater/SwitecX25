@@ -30,7 +30,7 @@ The ```update()``` call is _non-blocking_.  It does _NOT_ move
 the motor to the target position, it advances the motor _at most
 just one step_ toward the target position and returns.
 
-The correct way to use this library is:
+The correct way to use this library asynchronously is:
 
 - Add a call to ```update()``` inside your main loop.  It should be called as frequently as possible.  It will return quickly if there is nothing to be done.  This means for example if you are waiting for serial I/O, you should be calling ```update()``` while you are waiting.
 
@@ -40,8 +40,11 @@ The advantage of this over a blocking/synchronous library is that you can
 control many motors simultanously, and you wont have long periods of inactivity
 (and potentially missed I/O events) while your motor is moving.
 
-If you require a blocking call you can use the ```updateBlocking()``` method, which will move the motor smoothly to the position set by ```setPosition()```.
+If instead you require a blocking call which will complete the motor action before returning:
 
+- Call ```setPosition()``` to to the target position of the motore
+- 
+- Call ```updateBlocking()``` which will move the motor smoothy to the position set by ```setPosition()```.
 
 Using the Library
 -----------------
