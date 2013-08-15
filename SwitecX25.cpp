@@ -196,3 +196,14 @@ void SwitecX25::update()
 }
 
 
+//This updateMethod is blocking, it will give you smoother movements, but your application will wait for it to finish
+void SwitecX25::updateBlocking()
+{
+  while (!stopped) {
+    unsigned long delta = micros() - time0;
+    if (delta >= microDelay) {
+      advance();
+    }
+  }
+}
+
