@@ -121,12 +121,11 @@ void SwitecX25::zero()
 
 void SwitecX25::advance()
 {
-  time0 = micros();
-  
   // detect stopped state
   if (currentStep==targetStep && vel==0) {
     stopped = true;
     dir = 0;
+    time0 = micros();
     return;
   }
   
@@ -170,6 +169,7 @@ void SwitecX25::advance()
     i++;
   }
   microDelay = accelTable[i][1];
+  time0 = micros();
 }
 
 void SwitecX25::setPosition(unsigned int pos)
