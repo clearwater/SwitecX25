@@ -19,7 +19,7 @@
 // standard X25.168 range 315 degrees at 1/3 degree steps
 #define STEPS (315*3)
 
-// For motors connected to pins 3,4,5,6
+// For motors connected to digital pins 4,5,6,7
 SwitecX25 motor1(STEPS,4,5,6,7);
 
 void setup(void)
