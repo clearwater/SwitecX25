@@ -1,0 +1,14 @@
+{
+    "name": "SwitecX25",
+    "keywords": "driver, motor, control",
+    "description": "Arduino library for driving Switec X25.168 miniature stepper motors",
+    "homepage": "http://clearwater.github.com/gaugette/",
+    "repository":
+    {
+      "type": "git",
+      "url": "https://github.com/clearwater/SwitecX25.git"
+    },
+    "version": "1.0.0",
+    "frameworks": "arduino",
+    "platforms": "*"
+}
