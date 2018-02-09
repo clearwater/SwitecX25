@@ -26,7 +26,7 @@ class SwitecX25
    unsigned short (*accelTable)[2]; // accel table can be modified.
    unsigned int maxVel;           // fastest vel allowed
    unsigned int vel;              // steps travelled under acceleration
-   char dir;                      // direction -1,0,1  
+   signed char dir;                      // direction -1,0,1  
    boolean stopped;               // true if stopped
    
    SwitecX25(unsigned int steps, unsigned char pin1, unsigned char pin2, unsigned char pin3, unsigned char pin4);
