@@ -15,10 +15,10 @@
 // with a fixed step period defined by RESET_STEP_MICROSEC
 #define RESET_STEP_MICROSEC 800
 
-// This table defines the acceleration curve.
-// 1st value is the speed step, 2nd value is delay in microseconds
-// 1st value in each row must be > 1st value in subsequent row
-// 1st value in last row should be == maxVel, must be <= maxVel
+// This table defines the acceleration curve as a list of (step, delay) pairs.
+// 1st value is the cumulative step count since starting from rest, 2nd value is delay in microseconds.
+// 1st value in each subsequent row must be > 1st value in previous row
+// The delay in the last row determines the maximum angular velocity.
 static unsigned short defaultAccelTable[][2] = {
   {   20, 3000},
   {   50, 1500},
