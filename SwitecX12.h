@@ -14,7 +14,7 @@ class SwitecX12 {
     unsigned short (*accelTable)[2]; // accel table can be modified.
     unsigned int maxVel;           // fastest vel allowed
     unsigned int vel;              // steps travelled under acceleration
-    char dir;                      // direction -1,0,1
+    int dir;                      // direction -1,0,1
     boolean stopped;               // true if stopped
     SwitecX12(unsigned int steps, unsigned char pinStep, unsigned char pinDir);
 
