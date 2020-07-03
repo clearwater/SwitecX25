@@ -110,7 +110,7 @@ void SwitecX12::advance()
     // case 1 : moving towards target (maybe under accel or decel)
     if (delta < vel) {
       // time to declerate
-      vel--;
+      vel = delta;
     } else if (vel < maxVel) {
       // accelerating
       vel++;
