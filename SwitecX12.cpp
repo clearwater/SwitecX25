@@ -35,7 +35,6 @@ SwitecX12::SwitecX12(unsigned int steps, unsigned char pinStep, unsigned char pi
   pinMode(pinDir, OUTPUT);
   digitalWrite(pinStep, LOW);
   digitalWrite(pinDir, LOW);
-  pinMode(13, OUTPUT);
 
   dir = 0;
   vel = 0;
