@@ -14,6 +14,11 @@
 class SwitecX25
 {
  public:
+   typedef struct {
+	 unsigned short steps;
+	 unsigned short time;    // in microseconds
+   } AccelTable;
+
    static const unsigned char pinCount = 4;
    static const unsigned char stateCount = 6;
    unsigned char pins[pinCount];
@@ -23,7 +28,8 @@ class SwitecX25
    unsigned int steps;            // total steps available
    unsigned long time0;           // time when we entered this state
    unsigned int microDelay;       // microsecs until next state
-   unsigned short (*accelTable)[2]; // accel table can be modified.
+   AccelTable *accelTable;        // accel table can be modified.
+   unsigned char accelTableSize;  // How many rows in the acceleration table
    unsigned int maxVel;           // fastest vel allowed
    unsigned int vel;              // steps travelled under acceleration
    signed char dir;                      // direction -1,0,1  
@@ -37,6 +43,12 @@ class SwitecX25
    void update();
    void updateBlocking();
    void setPosition(unsigned int pos);
+   template<typename T, size_t N> void setAccelTable(T (&table)[N]) {
+	 accelTable = table;
+	 accelTableSize = N;
+	 maxVel = accelTable[accelTableSize - 1].steps;
+   };
+   short getAccel(int vel);
   
  private:
    void advance();
