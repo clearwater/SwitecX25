@@ -19,14 +19,13 @@
 // 1st value is the cumulative step count since starting from rest, 2nd value is delay in microseconds.
 // 1st value in each subsequent row must be > 1st value in previous row
 // The delay in the last row determines the maximum angular velocity.
-static unsigned short defaultAccelTable[][2] = {
+static SwitecX25::AccelTable defaultAccelTable[] = {
   {   20, 3000},
   {   50, 1500},
   {  100, 1000},
   {  150,  800},
   {  300,  600}
 };
-#define DEFAULT_ACCEL_TABLE_SIZE (sizeof(defaultAccelTable)/sizeof(*defaultAccelTable))
 
 // experimentation suggests that 400uS is about the step limit 
 // with my hand-made needles made by cutting up aluminium from
@@ -59,8 +58,14 @@ SwitecX25::SwitecX25(unsigned int steps, unsigned char pin1, unsigned char pin2,
   currentStep = 0;
   targetStep = 0;
 
-  accelTable = defaultAccelTable;
-  maxVel = defaultAccelTable[DEFAULT_ACCEL_TABLE_SIZE-1][0]; // last value in table.
+  setAccelTable(defaultAccelTable);
+}
+
+short SwitecX25::getAccel(int vel) {
+  // Loop through the table until we find a vel less than our current value.
+  unsigned char i = 0;
+  for (; this->accelTable[i].steps < abs(vel) && i < accelTableSize; i++);
+  return accelTable[i].time;
 }
 
 void SwitecX25::writeIO()
@@ -163,13 +168,9 @@ void SwitecX25::advance()
   }
     
   // vel now defines delay
-  unsigned char i = 0;
-  // this is why vel must not be greater than the last vel in the table.
-  while (accelTable[i][0]<vel) {
-    i++;
-  }
-  microDelay = accelTable[i][1];
+  microDelay = getAccel(vel);
   time0 = micros();
+
 }
 
 void SwitecX25::setPosition(unsigned int pos)
